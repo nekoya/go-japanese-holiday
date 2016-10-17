@@ -8,11 +8,13 @@ import (
 
 func main() {
 	t := time.Now()
+	if holidays.IsWeekend(t) {
+		os.Exit(0)
+	}
 	if in(holidays.GetHolidays(), t) {
 		os.Exit(0)
-	} else {
-		os.Exit(1)
 	}
+	os.Exit(1)
 }
 
 func in(haystack []time.Time, needle time.Time) bool {

@@ -6,6 +6,14 @@ import (
 	"time"
 )
 
+func IsWeekend(t time.Time) bool {
+	w := t.Weekday()
+	if w == time.Sunday || w == time.Saturday {
+		return true
+	}
+	return false
+}
+
 func GetHolidays() []time.Time {
 	holidays := make([]time.Time, 0, 100)
 	for _, l := range Holidays() {
