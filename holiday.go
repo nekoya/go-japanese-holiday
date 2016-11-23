@@ -7,11 +7,12 @@ import (
 )
 
 func main() {
-	t := time.Now()
-	if holidays.IsWeekend(t) {
+	now := time.Now()
+	today := time.Date(now.Year(), time.Month(now.Month()), now.Day(), 0, 0, 0, 0, time.Local)
+	if holidays.IsWeekend(today) {
 		os.Exit(0)
 	}
-	if in(holidays.GetHolidays(), t) {
+	if in(holidays.GetHolidays(), today) {
 		os.Exit(0)
 	}
 	os.Exit(1)
